@@ -1,19 +1,70 @@
-# React + Vite
+# Todo App — React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and
-some ESLint rules.
+Продвинутое Todo-приложение с REST API, построенное по архитектуре Feature-Sliced Design.
 
-Currently, two official plugins are available:
+🔗 **[Live Demo](https://khat4668.github.io/todo-react/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react)
-  uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc)
-  uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Стек
 
-If you are developing a production application, we recommend using TypeScript
-with type-aware lint rules enabled. Check out
-the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts)
-for information on how to integrate TypeScript and [
-`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React 19** — функциональные компоненты, хуки
+- **Vite 7** — сборка и dev-сервер
+- **SCSS** — стилизация
+- **json-server** — REST API для работы с задачами
+- **ESLint** — линтинг (eslint-plugin-react-hooks, react-refresh)
+- **gh-pages** — деплой на GitHub Pages
+
+---
+
+## Архитектура
+
+Проект построен по методологии **Feature-Sliced Design (FSD)**:
+
+```
+src/
+├── app/              # Инициализация приложения, провайдеры
+├── pages/            # Страницы (список задач, детальная страница)
+├── widgets/Todo/     # Виджет списка задач
+├── features/         # Фичи (добавление, фильтрация и т.д.)
+├── entities/todo/    # Бизнес-сущность задачи
+└── shared/           # Переиспользуемые утилиты, UI-компоненты
+```
+
+---
+
+## Возможности
+
+- Добавление новой задачи через поле ввода
+- Удаление отдельной задачи и очистка всего списка (**Delete all**)
+- Отметка задачи как выполненной (чекбокс)
+- Поиск задач по названию в реальном времени
+- Быстрый переход к первой невыполненной задаче (**Show first incomplete task**)
+- Детальная страница задачи со статусом выполнения
+- Счётчик выполненных задач (`Done X from Y`)
+- Данные загружаются и сохраняются через REST API (json-server)
+
+---
+
+## Запуск локально
+
+```bash
+# Установка зависимостей
+npm install
+
+# Запуск API-сервера (порт 3001)
+npm run server
+
+# Запуск dev-сервера (порт 5173)
+npm run dev
+```
+
+---
+
+## Деплой
+
+```bash
+npm run deploy
+```
+
+Скрипт выполняет сборку, копирует `index.html` в `404.html` для корректной работы роутинга на GitHub Pages, и публикует папку `dist`.
