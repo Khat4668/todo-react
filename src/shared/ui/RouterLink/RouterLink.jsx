@@ -1,4 +1,5 @@
 import {BASE_URL} from "@/shared/constants";
+import styles from './RouterLink.module.scss';
 
 const RouterLink = (props) => {
   const {
@@ -15,6 +16,7 @@ const RouterLink = (props) => {
 
   return (
     <a
+      className={styles.link}
       href={`${BASE_URL}${to}`}
       onClick={handleClick} {...rest}>
       {children}
