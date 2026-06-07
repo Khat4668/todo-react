@@ -1,6 +1,7 @@
 # Todo App — React + Vite
 
-Продвинутое Todo-приложение с REST API, построенное по архитектуре Feature-Sliced Design.
+Продвинутое Todo-приложение с REST API, построенное по архитектуре
+Feature-Sliced Design.
 
 🔗 **[Live Demo](https://khat4668.github.io/todo-react/)**
 
@@ -13,7 +14,8 @@
 - **SCSS** — стилизация
 - **json-server** — REST API для работы с задачами
 - **ESLint** — линтинг (eslint-plugin-react-hooks, react-refresh)
-- **gh-pages** — деплой на GitHub Pages
+- **GitHub Actions** — CI/CD, автодеплой на GitHub Pages
+- **Кастомный роутер** — реализован на History API без сторонних библиотек
 
 ---
 
@@ -42,7 +44,8 @@ src/
 - Быстрый переход к первой невыполненной задаче (**Show first incomplete task**)
 - Детальная страница задачи со статусом выполнения
 - Счётчик выполненных задач (`Done X from Y`)
-- Данные загружаются и сохраняются через REST API (json-server)
+- Данные сохраняются через REST API (json-server) локально или localStorage в
+  production
 
 ---
 
@@ -63,8 +66,8 @@ npm run dev
 
 ## Деплой
 
-```bash
-npm run deploy
-```
+Деплой настроен через **GitHub Actions** — срабатывает автоматически при пуше в
+ветку `main`.
 
-Скрипт выполняет сборку, копирует `index.html` в `404.html` для корректной работы роутинга на GitHub Pages, и публикует папку `dist`.
+Воркфлоу выполняет сборку (`npm run build`), копирует `index.html` в `404.html`
+для корректной работы роутинга на GitHub Pages, и публикует папку `dist`.
